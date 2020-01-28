@@ -4,8 +4,6 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Net;
-using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,95 +12,60 @@ namespace MoneyHub
 {
     public partial class Login : Form
     {
-        #region Login Form Code
-        //Initialize components 
-        RegistrationForm newAccountForm = new RegistrationForm();
-        //Login loginPanel = new Login();
-        //Function thats called on startub 
+        #region Login
+        #region Startup
         public Login()
         {
             InitializeComponent();
         }
-        //
-        private void Login_Load(object sender, EventArgs e)
+        #endregion
+        #region initialize variables
+        //Variables
+        User currentUser = null;
+        User testUser = new User("test", "test");
+        Home application = new Home();
+        String userText = string.Empty;
+        String pwdText = string.Empty;
+        #endregion
+        #region User Attempts to Login 
+        private void loginButton_Click(object sender, EventArgs e)
         {
-            //ExecuteClient();
-        }
-        static void ExecuteClient()
-        {
-            try
+            userText = this.usernameText.Text;
+            pwdText = this.passwordText.Text;
+            if (!userText.Equals(string.Empty) && !pwdText.Equals(string.Empty))
             {
-                // Establish the remote endpoint
-                // for the socket. This example
-                // uses port 1338 on the router
-                // located at 24.220.156.95
-
-                byte[] ip = { 24, 220, 156, 95 };
-                IPAddress ipAddr = new IPAddress(ip);
-                IPEndPoint localEndPoint = new IPEndPoint(ipAddr, 1338);
-                Console.WriteLine(localEndPoint.Address);
-
-                // Creation TCP/IP Socket using
-                // Socket Class Constructor
-                Socket sender = new Socket(ipAddr.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
-
-                try
+                this.credentialsInvalidText.Visible = false;
+                //TODO: Check the userText against the database to see if there is an 
+                //      account with that user name and then check the password if there is.
+                //for now the code will check to see if the user is test and password is test.
+                if (userText.Equals("test"))
                 {
-                    // Connect Socket to the remote
-                    // endpoint using method Connect()
-                    sender.Connect(localEndPoint);
-
-                    // We print EndPoint information
-                    // that we are connected
-                    Console.WriteLine("Socket connected to -> {0}", sender.RemoteEndPoint.ToString());
-
-                    // Creation of message that
-                    // we will send to Server
-                    byte[] messageSent = Encoding.ASCII.GetBytes("12");
-                    int byteSent = sender.Send(messageSent);
-
-                    // Data buffer
-                    byte[] messageReceived = new byte[1024];
-
-                    // We receive the message using
-                    // the method Receive(). This
-                    // method returns number of bytes
-                    // received, that we'll use to
-                    // convert them to string
-                    int byteRecv = sender.Receive(messageReceived);
-                    Console.WriteLine("Message from Server -> {0}", Encoding.ASCII.GetString(messageReceived, 0, byteRecv));
-
-                    // Close Socket using
-                    // the method Close()
-                    sender.Shutdown(SocketShutdown.Both);
-                    sender.Close();
+                    if (pwdText.Equals("test"))
+                    {
+                        Console.WriteLine(DateTime.Now + ": Login Succeeded, User: " + testUser.getUsername());
+                        application.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        Console.WriteLine(DateTime.Now + ": Login Credentials Invalid:");
+                        this.credentialsInvalidText.Visible = true;
+                    }
                 }
-                catch (ArgumentNullException ane)
+                else
                 {
-                    Console.WriteLine("Argument null exception : {0}", ane.ToString());
-                }
-                catch (SocketException se)
-                {
-                    Console.WriteLine("Socket exception : {0}", se.ToString());
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine("Unexpected exception : {0}", e.ToString());
+                    Console.WriteLine(DateTime.Now + ": Login Credentials Invalid:");
+                    this.credentialsInvalidText.Visible = true;
                 }
             }
-            catch (Exception e)
+            else
             {
-                Console.WriteLine(e.ToString());
+                Console.WriteLine(DateTime.Now + ": Login Credentials Invalid:");
+                this.credentialsInvalidText.Visible = true;
             }
         }
+        #endregion
 
-        private void createAccountLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        { 
-            this.loginBasePanel.Controls.Clear();
-            
-            this.loginBasePanel.Controls.Add(newAccountForm.accountCreationBasePanel);
-            this.Text = "Account Creation";
-        }
         #endregion
     }
 }

@@ -7,13 +7,13 @@ C:\Users\sdres\source\repos\MoneyHub\bin\Debug\MoneyHub.exe
 C:\Users\sdres\source\repos\MoneyHub\bin\Debug\MoneyHub.pdb
 C:\Users\sdres\source\repos\MoneyHub\obj\Debug\MoneyHub.exe
 C:\Users\sdres\source\repos\MoneyHub\obj\Debug\MoneyHub.pdb
-C:\Users\sdres\source\repos\CSCI-463-Project\MoneyHub\bin\Debug\MoneyHub.exe.config
-C:\Users\sdres\source\repos\CSCI-463-Project\MoneyHub\bin\Debug\MoneyHub.exe
-C:\Users\sdres\source\repos\CSCI-463-Project\MoneyHub\bin\Debug\MoneyHub.pdb
 C:\Users\sdres\source\repos\CSCI-463-Project\MoneyHub\obj\Debug\MoneyHub.csprojAssemblyReference.cache
 C:\Users\sdres\source\repos\CSCI-463-Project\MoneyHub\obj\Debug\MoneyHub.Login.resources
 C:\Users\sdres\source\repos\CSCI-463-Project\MoneyHub\obj\Debug\MoneyHub.Properties.Resources.resources
 C:\Users\sdres\source\repos\CSCI-463-Project\MoneyHub\obj\Debug\MoneyHub.csproj.GenerateResource.cache
 C:\Users\sdres\source\repos\CSCI-463-Project\MoneyHub\obj\Debug\MoneyHub.exe
 C:\Users\sdres\source\repos\CSCI-463-Project\MoneyHub\obj\Debug\MoneyHub.pdb
-C:\Users\sdres\source\repos\CSCI-463-Project\MoneyHub\obj\Debug\MoneyHub.NewAccountCreator.resources
+C:\Users\sdres\source\repos\CSCI-463-Project\MoneyHub\bin\Debug\MoneyHub.exe.config
+C:\Users\sdres\source\repos\CSCI-463-Project\MoneyHub\bin\Debug\MoneyHub.exe
+C:\Users\sdres\source\repos\CSCI-463-Project\MoneyHub\bin\Debug\MoneyHub.pdb
+C:\Users\sdres\source\repos\CSCI-463-Project\MoneyHub\obj\Debug\MoneyHub.Home.resources
