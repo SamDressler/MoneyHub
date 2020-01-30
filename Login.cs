@@ -13,19 +13,28 @@ namespace MoneyHub
     public partial class Login : Form
     {
         #region Login
-        #region Startup
-        public Login()
-        {
-            InitializeComponent();
-        }
-        #endregion
+
         #region initialize variables
-        //Variables
-        User currentUser = null;
+        //Variables "192.168.51.209"
+        //byte[] ip = { 192, 168, 51, 209};
+        //Sam's pc ip
+        String ip = "192.168.51.209";
+        int port = 4444;
+        string message = "Test2";
+        ServerConnector client = new ServerConnector();
+        
+        //User currentUser = null;
         User testUser = new User("test", "test");
         Home application = new Home();
         String userText = string.Empty;
         String pwdText = string.Empty;
+        #endregion
+        #region Startup
+        public Login()
+        {
+            this.client.ExecuteClient(ip, port, message);
+            InitializeComponent();
+        }
         #endregion
         #region User Attempts to Login 
         private void loginButton_Click(object sender, EventArgs e)
@@ -49,12 +58,14 @@ namespace MoneyHub
                     else
                     {
                         Console.WriteLine(DateTime.Now + ": Login Credentials Invalid:");
+                        this.credentialsInvalidText.Text = "Password is incorrect";
                         this.credentialsInvalidText.Visible = true;
                     }
                 }
                 else
                 {
-                    Console.WriteLine(DateTime.Now + ": Login Credentials Invalid:");
+                    Console.WriteLine(DateTime.Now + ": Username Invalid:");
+                    this.credentialsInvalidText.Text = "Username not recognized";
                     this.credentialsInvalidText.Visible = true;
                 }
             }
